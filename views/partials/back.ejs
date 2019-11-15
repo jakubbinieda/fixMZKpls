@@ -1,0 +1,49 @@
+<div class="footer" id="footer">
+    <% include ../partials/head %>
+    <p style="float:left !important;">jakub.binieda@icloud.com</p>
+    <a href="/licence"><div><p>&copy; 2019 Jakub Binięda</p></div></a>
+</div>
+
+<script>
+    const footer =  document.querySelector('.footer')
+    $(window).on('scroll', function() { 
+        if ($(window).scrollTop() >= window.innerHeight) { 
+            document.getElementById("footer").style.display="block" ;
+            footer.classList.add('animated', 'fadeInUp');
+            
+        } else {
+            document.getElementById("footer").style.display="none"; 
+            
+        }
+    }); 
+</script>
+<style>
+    .footer {
+        font-family: 'Roboto', sans-serif;
+        position: fixed;
+        width: 100%;
+        background-color: #666;
+        color: white;
+        left: 0;
+        bottom: 0;
+        height: 25px;
+        margin-bottom: 0px;
+        display: none;
+    }
+    .footer a{
+        color:white;
+    }
+    .footer p {
+        display: inline-block;
+        float: right;
+        font-size: 13px;
+        margin-top: 0;
+        padding: 6px 6px 6px 6px;
+    }
+    @media screen and (max-width: 600px) {
+        .footer p{
+            font-size: 9px;
+            padding: 8px 8px 8px 8px;
+        }
+    }
+</style>

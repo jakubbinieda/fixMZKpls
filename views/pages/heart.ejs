@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <% include ../partials/head %>
+        <title>Fix MZK pls</title>
+    </head>
+    <body>
+        <div class="loader" id="loader">
+        </div>
+        <div class="mainPhoto">
+        </div>
+        <div class="mainText">
+            <h1>Naprawmy razem bielskie MZK!</h1>
+            <h5>Jeśli masz uwagę lub propozycję, co do funkcjonowania naszej komunikacji miejskiej, zgłoś ją</h5>
+            <a data-scroll href="#screen" class="button">TUTAJ</a>
+        </div>
+        <a href="/formularz"><i class="questionMark far fa-question-circle"></i></a>
+        <div class="background">
+            <div class="container">
+                <div class="screen" id="screen">
+                    <div class="screen-body">
+                        <div class="screen-body-item left">
+                            <div class="title">
+                                <span>ZGŁOŚ</span>
+                                <span>PROBLEM</span>
+                            </div>
+                        </div>
+                        <div class="screen-body-item">
+                            <form method="post" class="form" action="/form" >
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="IMIĘ" name="name">
+                                </div>
+                                <div class="form-group message">
+                                    <textarea class="form-control" placeholder="TREŚĆ" name="message"></textarea>
+                                </div>
+                                <div class="form-group buttons">
+                                    <input type="submit" class="form-button" id="submit" value="WYŚLIJ">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% include ../partials/back %>
+    </body>
+</html>
+<script>
+    var scroll = new SmoothScroll('a[href*="#"]');
+    autosize(document.querySelectorAll('textarea'));
+    autosize($('textarea'));
+    
+    $(document).ready(function () {
+        setTimeout(function(){
+            const loader =  document.querySelector('.loader');
+            loader.classList.add('animated', 'fadeOut');
+            document.getElementById("loader").style.zIndex = "0";
+            $('html').css({overflow: 'scroll'});
+        }, 2000);
+    });
+    
+    $(document).ready(function(){
+        var user,pass;
+        $("#submit").click(function(){
+          name=$("#name").val();
+          message=$("#message").val();
+          $.post("http://localhost:8080/form",{name: name ,message: message}, function(data){
+            if(data==='done')
+              {
+                alert("login success");
+              }
+          });
+        });
+      });
+</script>
