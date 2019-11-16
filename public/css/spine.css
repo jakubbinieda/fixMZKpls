@@ -160,22 +160,3 @@ textarea{
     }
 }
 
-@media screen and (max-width: 600px) {
-    .title{
-        font-size: 20px;
-    }
-    .form-control {
-        font-size: 10px;    
-    }
-    .screen-body {
-        padding: 40px;
-    }
-    .button {
-        font-size: 20px;
-    }
-
-    .screen-body-item {
-        padding: 0;
-    }
-
-}
